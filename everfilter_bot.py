@@ -16,6 +16,8 @@ def on_chat_message(msg):
             bot.sendPhoto(chat_id, f_result)
 
 
-bot = telepot.Bot("318673002:AAEd7Ezq5g6GKgYfw0etXBX8yL-wu16GXNo")
+
+'bot = telepot.Bot("318673002:AAEd7Ezq5g6GKgYfw0etXBX8yL-wu16GXNo")
+ bot = telepot.Bot("257294773:AAEtjQXwJfRVtaJw0AlWKGozxETZS_GoxCI")
 print('Listening ...')
 bot.message_loop({'chat': on_chat_message}, run_forever=True)
