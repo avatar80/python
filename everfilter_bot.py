@@ -1,5 +1,6 @@
 import requests
 import telepot
+import configparser
 
 def on_chat_message(msg):
     content_type, chat_type, chat_id = telepot.glance(msg)
@@ -25,6 +26,8 @@ def on_chat_message(msg):
 
 
 #bot = telepot.Bot("318673002:AAEd7Ezq5g6GKgYfw0etXBX8yL-wu16GXNo")
-bot = telepot.Bot("257294773:AAEtjQXwJfRVtaJw0AlWKGozxETZS_GoxCI")
+cfg = configparser.ConfigParser()
+cfg.read('token.cfg')
+bot = telepot.Bot(cfg['everfilter_bot']['token'])
 print('Listening ...')
 bot.message_loop({'chat': on_chat_message}, run_forever=True)
