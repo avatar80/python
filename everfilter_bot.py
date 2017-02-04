@@ -4,6 +4,14 @@ import telepot
 def on_chat_message(msg):
     content_type, chat_type, chat_id = telepot.glance(msg)
 
+    if content_type == 'text':
+        chat_id = msg['chat']['id']
+        text = msg['text']
+
+        if text == "/help":
+            bot.sendMessage(chat_id,'Hi, I\'m everfilter bot. \n if you send me an picture, '
+                            'I\'ll give you everfiltering picture. \n Only jpg file is enable to use.')
+
     if content_type == 'photo':
         print('received a picture')
         bot.download_file(msg['photo'][-1]['file_id'], './file.jpg')
@@ -16,8 +24,7 @@ def on_chat_message(msg):
             bot.sendPhoto(chat_id, f_result)
 
 
-
-'bot = telepot.Bot("318673002:AAEd7Ezq5g6GKgYfw0etXBX8yL-wu16GXNo")
- bot = telepot.Bot("257294773:AAEtjQXwJfRVtaJw0AlWKGozxETZS_GoxCI")
+#bot = telepot.Bot("318673002:AAEd7Ezq5g6GKgYfw0etXBX8yL-wu16GXNo")
+bot = telepot.Bot("257294773:AAEtjQXwJfRVtaJw0AlWKGozxETZS_GoxCI")
 print('Listening ...')
 bot.message_loop({'chat': on_chat_message}, run_forever=True)
